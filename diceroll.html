@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Rolling Game</title>
+    <style>
+        /* Add some basic styles for the dice */
+
+        .dice-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .dice {
+            display: inline-block;
+            width: 350px;
+            height: 350px;
+            border: 60px solid black;
+            text-align: center;
+            line-height: 300px;
+            font-size: 300px;
+            margin: 200px;
+        }
+
+        header {
+            text-align: center;
+            background-color: blueviolet;
+            padding: 20px;
+            color: white;
+        }
+
+        body {
+            margin: 0;
+            background-image: url('https://i.redd.it/eu3a6w1f8ir51.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Dice Rolling Game</h1>
+    </header>
+
+    <div class="dice-container">
+        <div class="dice" id="d6"></div>
+        <div class="dice" id="d10"></div>
+    </div>
+
+    <script>
+        // Function to roll a dice with the given number of sides
+        function rollDice(sides) {
+            if (sides < 2) {
+                throw new Error("Number of sides should be at least 2");
+            }
+            return Math.floor(Math.random() * sides) + 1;
+        }
+
+        // Get the dice elements from the HTML
+        const d6Element = document.getElementById('d6');
+        const d10Element = document.getElementById('d10');
+
+        // Function to update the dice element with the rolled value
+        function updateDice(diceElement, sides) {
+            const result = rollDice(sides);
+            diceElement.textContent = result;
+        }
+
+        // Add event listener to roll the d6 (6-sided dice) when clicked 
+        d6Element.addEventListener('click', function () {
+            updateDice(d6Element, 6);
+        });
+
+        // Add event listener to roll the d10 (10-sided dice) when clicked 
+        d10Element.addEventListener('click', function () {
+            updateDice(d10Element, 10);
+        });
+    </script>
+
+</body>
+
+</html>

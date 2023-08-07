@@ -1,33 +1,17 @@
-const divideNumbers = require('./dividenumbers');
+// Get references to the button and result elements
+const rollButton = document.getElementById('rollButton');
+const diceResult = document.getElementById('diceResult');
 
-test('Divide two positive numbers', () => {
-  expect(divideNumbers(10, 2)).toBe(5);
-});
+// Define a function to generate a random number between 1 and 6 (for a standard die)
+function rollDice() {
+    return Math.floor(Math.random() * 6) + 1;
+}
 
-test('Divide a positive number by zero', () => {
-  expect(() => divideNumbers(10, 0)).toThrow('Division by zero is not allowed.');
-});
-
-test('Divide zero by a positive number', () => {
-  expect(divideNumbers(0, 5)).toBe(0);
-});
-
-test('Divide a positive number by a negative number', () => {
-  expect(divideNumbers(10, -2)).toBe(-5);
-});
-
-test('Divide two negative numbers', () => {
-  expect(divideNumbers(-8, -2)).toBe(4);
-});
-
-test('Divide a number by a string', () => {
-  expect(() => divideNumbers(10, 'hello')).toThrow('Both arguments must be numbers.');
-});
-
-test('Divide two strings', () => {
-  expect(() => divideNumbers('hello', 'world')).toThrow('Both arguments must be numbers.');
-});
-
-test('Divide a number by undefined', () => {
-  expect(() => divideNumbers(6, undefined)).toThrow('Both arguments must be numbers.');
+// Add a click event listener to the roll button
+rollButton.addEventListener('click', () => {
+    // Generate a random dice roll
+    const result = rollDice();
+    
+    // Update the dice result element
+    diceResult.textContent = `Result: ${result}`;
 });
